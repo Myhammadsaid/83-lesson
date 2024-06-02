@@ -85,7 +85,7 @@ const Navbar = () => {
                 </svg>
                 Cart
               </NavLink>
-              <a href="#" className="nav-item">
+              <NavLink to={"/chart"} className="nav-item">
                 <svg
                   width={24}
                   height={24}
@@ -100,8 +100,8 @@ const Navbar = () => {
                     strokeWidth="1.825"
                   ></path>
                 </svg>
-                Войти
-              </a>
+                Chart
+              </NavLink>
               <b className="header-heart">{wishlist}</b>
               <b className="header-cart">{cart}</b>
             </div>
