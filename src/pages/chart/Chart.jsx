@@ -8,18 +8,18 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const Chart = () => {
   const [products, setProducts] = useState(null);
   const [offset, setOffset] = useState(1);
-  const PAGE_COUNT = 5;
+  const [pageCount, setPageCount] = useState(3);
 
   useEffect(() => {
     axios
       .get("https://dummyjson.com/products", {
         params: {
-          limit: PAGE_COUNT,
-          skip: PAGE_COUNT * offset,
+          limit: pageCount,
+          skip: pageCount * offset,
         },
       })
       .then((res) => setProducts(res.data.products));
-  }, [offset]);
+  }, [offset, pageCount]);
 
   const data = {
     labels: products?.map((pro) => pro.title),
@@ -57,6 +57,11 @@ const Chart = () => {
         <button onClick={() => setOffset((p) => p + 1)} className="chart-btn">
           Next
         </button>
+        <select onChange={(e) => setPageCount(+e.target.value)} name="" id="">
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+        </select>
       </div>
     </div>
   );
